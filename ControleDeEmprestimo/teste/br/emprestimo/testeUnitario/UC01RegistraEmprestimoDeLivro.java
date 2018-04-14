@@ -69,7 +69,14 @@ public class UC01RegistraEmprestimoDeLivro {
 	}
 	@Test
 	public void CT06UC01FB_registrar_emprestimo_com_data_invalida() {
-		assertFalse(emprestimo.validaData("30/02/2000"));
+		Emprestimo emprestimo2 = new Emprestimo();
+		try{
+			emprestimo2.setDataEmprestimo("30/02/2000");
+			fail ("deveria lanção uma exceção");
+		}catch(Exception e){
+			assertEquals("data invalida", e.getMessage());
+		}
+		//assertFalse(emprestimo.validaData("30/02/2000"));
 	}
 	@Test
 	public void CT07UC01FB_registrar_emprestimo_com_data_valida() {
